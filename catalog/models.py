@@ -6,6 +6,7 @@ NULLABLE = {'blank': True, 'null': True}
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='наименование')
     description = models.TextField(verbose_name='описание')
+    image = models.ImageField(upload_to='category/', verbose_name='изображение (превью)', **NULLABLE)
 
     def __str__(self):
         return f'{self.name}'
@@ -30,3 +31,20 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=50, verbose_name='заголовок')
+    slug = models.CharField(max_length=50, verbose_name='slug')
+    content = models.TextField(verbose_name='содержимое')
+    image = models.ImageField(upload_to='blog/', verbose_name='изображение (превью)', **NULLABLE)
+    date_create = models.DateField(auto_now_add=True, verbose_name='дата создания')
+    is_active = models.BooleanField(default=True, verbose_name='признак публикации')
+    view_count = models.IntegerField(default=0, verbose_name='количество просмотров')
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'блог'
+        verbose_name_plural = 'блоги'

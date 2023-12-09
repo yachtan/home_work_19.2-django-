@@ -1,0 +1,21 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+ <div class="col-12">
+        <div class="row">
+            <div class="col-6">
+                <div class="card mb-18 box-shadow">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <p>Хотите удалить данную статью?</p>
+                            <button type="submit" class="btn btn-success">Подтвердить</button>
+                            <a href="{% url 'catalog:blog' object.pk %}" class="btn btn-primary my-2">Отменить</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
