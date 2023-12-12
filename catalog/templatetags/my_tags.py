@@ -14,4 +14,5 @@ def mymedia(val):
 def mymedia(val):
     if val:
         return f'/media/{val}'
-    return '#'
+    return '/media/blog/Нет_изображения.jpg'
+
