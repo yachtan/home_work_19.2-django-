@@ -11,15 +11,17 @@
       <div class="col-md-18">
         <div class="card mb-18 box-shadow">
             <img class="card-img-top"
-                 src="{{ object.image|mymedia }}"
+                 src="{% mymedia object.image %}"
                  alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">{{ object | title }}</p>
                 <p class="card-text">{{ object.description | truncatechars:100}}</p>
+                <p class="card-text" style="color: gray">Версия продукта: {{ active_version_number }}</p>
+                <p class="card-text" style="color: gray">{{ active_version_name }}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-outline-secondary">В корзину</button>
-
+                        <a href="{% url 'catalog:all_products' category_pk %}" class="btn btn-primary my-2">Назад</a>
                     </div>
                 </div>
             </div>
